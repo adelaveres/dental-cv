@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root{
+--brand: #0ea5a4;
+}
+
+
+/* Respect user's reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  * {
+  animation-duration: 1ms !important;
+  transition-duration: 1ms !important;
+  scroll-behavior: auto !important;
+  }
+}
+
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 antialiased;
+  }
+}
