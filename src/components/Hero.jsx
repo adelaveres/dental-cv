@@ -21,7 +21,7 @@ export default function Hero(){
                         initial={{ y: 8, opacity: 0 }} 
                         animate={{ y: 0, opacity: 1 }} 
                         transition={{ delay: 0.2, duration: 0.8 }}>
-                            Mariș Marin — Technician Dentar
+                            Mariș Marin — Tehnician Dentar
                 </motion.h1>
 
                 <motion.p className="mt-3 text-gray-600" 
@@ -33,7 +33,7 @@ export default function Hero(){
 
                 <div className="mt-6 flex justify-center gap-3">
                     <a href="/CV_MARIS_MARIN_2025_DE.pdf" className="px-4 py-2 rounded-md border border-gray-400">Downloadează CV</a>
-                    <a href="#portfolio" className="px-4 py-2 rounded-md bg-brand text-white drop-shadow-lg">Vezi Lucrări</a>
+                    <a href="#portfolio" className="px-4 py-2 rounded-md bg-brand text-white drop-shadow-lg">Vezi lucrări</a>
                 </div>
 
                 <p className="mt-5 text-xs text-gray-400">Glisează în sus pentru mai multe</p>
