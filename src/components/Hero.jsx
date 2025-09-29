@@ -32,7 +32,7 @@ export default function Hero(){
                 </motion.p>
 
                 <div className="mt-6 flex justify-center gap-3">
-                    <a href="/CV_MARIS_MARIN_2025_DE.pdf" className="px-4 py-2 rounded-md border border-gray-400">Downloadează CV</a>
+                    <a href="/CV_MARIS_MARIN_2025_DE.pdf" className="px-4 py-2 rounded-md border border-gray-400">Descarcă CV</a>
                     <a href="#portfolio" className="px-4 py-2 rounded-md bg-brand text-white drop-shadow-lg">Vezi lucrări</a>
                 </div>
 
