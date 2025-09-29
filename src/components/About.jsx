@@ -12,9 +12,9 @@ export default function About(){
 
                     <div className="w-full md:w-1/2">
                         <motion.img
-                            src="/dental_tech_working.webp"
+                            src="/Marin_working4.jpg"
                             alt="Technical Dentist Working"
-                            className="w-[90%] mx-auto rounded-2xl min-h-[350px] object-cover shadow-lg"
+                            className="rounded-2xl min-h-[350px] object-cover shadow-lg"
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 1 }}
@@ -52,7 +52,11 @@ export default function About(){
                         
                     </div>
                 
+                    
+
                 </div>
+
+                
                 
                 
             </div>
