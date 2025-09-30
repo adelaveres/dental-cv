@@ -6,15 +6,15 @@ export default function About(){
             
             <div className="max-w-4xl mx-auto">
 
-                <h2 className="text-3xl font-bold mb-12 text-center">Despre mine . . .</h2>
+                {/* <h2 className="text-3xl font-bold mb-12 text-center">Despre mine . . .</h2> */}
 
                 <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
 
                     <div className="w-full md:w-1/2">
                         <motion.img
-                            src="/Marin_working4.jpg"
+                            src="/Marin_calculator_cut2.jpg"
                             alt="Technical Dentist Working"
-                            className="rounded-2xl min-h-[350px] object-cover shadow-lg"
+                            className="rounded-2xl min-h-[350px] max-h-[600px] object-cover shadow-lg"
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 1 }}
