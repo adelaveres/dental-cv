@@ -14,7 +14,7 @@ export default function About(){
                         <motion.img
                             src="/Marin_calculator_cut2.jpg"
                             alt="Technical Dentist Working"
-                            className="rounded-2xl min-h-[350px] max-h-[600px] object-cover shadow-lg"
+                            className="rounded-md min-h-[350px] max-h-[600px] object-cover shadow-lg"
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 1 }}
