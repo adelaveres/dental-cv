@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 
 export default function About(){
     return (
-        <section className="min-h-screen p-6 md:p-12 flex items-center bg-gradient-to-b from-white to-yellow-20">
+        <section className="min-h-screen p-6 md:p-12 flex items-center bg-gradient-to-b from-cyan-100 to-white">
             
             <div className="max-w-4xl mx-auto">
 

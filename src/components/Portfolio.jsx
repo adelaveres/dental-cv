@@ -100,7 +100,7 @@ export default function Portfolio(){
 
 
     return (
-        <section id="portfolio" className="min-h-screen p-6 md:p-12">
+        <section id="portfolio" className="min-h-screen p-6 md:p-12 bg-gradient-to-b from-cyan-50 to-white">
             <div className="max-w-4xl md:max-w-6xl mx-auto">
                 <h2 className="text-3xl font-bold mb-6 text-center">Lucrări</h2>
                 <p className="text-sm text-gray-500 mb-6 text-center">

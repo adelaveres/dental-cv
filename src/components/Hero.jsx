@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 export default function Hero(){
     return (
-        <section className="min-h-screen flex items-center p-6 md:p-12 bg-gradient-to-b from-white to-blue-200">
+        <section className="min-h-screen flex items-center p-6 md:p-12 bg-gradient-to-b from-white to-cyan-100">
             <div className="max-w-xl mx-auto text-center">
 
                 <motion.img

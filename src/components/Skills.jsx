@@ -33,7 +33,8 @@ const prodSkills = [
 
 export default function Skills() {
   return (
-    <section className="min-h-screen flex items-center p-6 md:p-12 bg-gray-50">
+    <section className="min-h-screen flex items-center p-6 md:p-12 bg-gradient-to-b from-white to-cyan-50"> 
+       {/* bg-gradient-to-b from-white to-gray-50 */}
       <div className="w-full max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold mb-6 text-center">Competențe</h2>
 
