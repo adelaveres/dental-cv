@@ -2,12 +2,13 @@ import { motion } from 'framer-motion'
 import { FaPlus} from "react-icons/fa";
 
 
-export default function PortfolioCard ({ imgSrc, imgTitle, imgDescription}){
+export default function PortfolioCard ({ imgSrc, imgTitle, imgDescription, onClick}){
     return (
         <motion.div className="flex-shrink-0 bg-white rounded-lg shadow p-4">
-                                
+
+            {/* Photo + Overlay group */}
             <div className="relative max-w-sm cursor-pointer overflow-hidden rounded-lg shadow-lg group"
-                // onClick={onClick}
+                onClick={onClick}
                 >
                 <img src={imgSrc} 
                     alt={imgTitle}
@@ -20,10 +21,10 @@ export default function PortfolioCard ({ imgSrc, imgTitle, imgDescription}){
                 
             </div>
 
-                <div className="mt-3">
-                    <h3 className="font-medium">{imgTitle}</h3>
-                    <p className="text-sm text-gray-500">{imgDescription}</p>
-                </div>
+            <div className="mt-3">
+                <h3 className="font-medium">{imgTitle}</h3>
+                <p className="text-sm text-gray-500">{imgDescription}</p>
+            </div>
         </motion.div>
 
     )
