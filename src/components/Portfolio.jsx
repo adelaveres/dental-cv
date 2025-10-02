@@ -4,60 +4,84 @@ import { motion } from 'framer-motion'
 import {FaTimes} from "react-icons/fa";
 
 
-// const categories = {
-//     modelaj: [
-//         "modelaj_v_cover.jpg",
-//         "modelaj_virtual_cover.jpeg",
-//         "modelaj1.jpeg",
-//         "modelaj2.jpeg",
-//         "modelaj3.jpeg",
-//         "modelaj4.jpeg",
-//         "modelaj5.jpeg",
-//         "modelaj6.jpeg",
-//     ]
-// }
+const categories = {
+    modelaj_virtual: [
+        "modelaj_virtual_cover2.jpeg",
+        "modelaj_v_cover.jpg",
+        "modelaj_virtual_cover.jpeg",
+        "modelaj1.jpeg",
+        "modelaj2.jpeg",
+        "modelaj3.jpeg",
+        "modelaj4.jpeg",
+        "modelaj5.jpeg",
+        "modelaj6.jpeg",
+    ],
+    emax: [
+        "coroane_emax_cover_cut3.jpeg",
+        "Emax1.jpg",
+        "Emax2.jpg",
+        "Emax3.jpg",
+        "Emax4.jpg",
+        "Emax5.jpeg",
+    ],
+    ceramica_stratificata: [ "ceramica_strat_cover_cut.jpeg","ceramica1.jpg", "ceramica2.jpeg"],
+    inlay_onlay: [ "inlay_cover.jpg","inlay_onlay1.jpg", "inlay_onlay3.jpg", "inlay_onlay2.jpg"],
+    implanturi: [ "lucrari_implant_cover.jpg","implanturi1.jpg", "lucrari_implanturi.jpeg", "implanturi2.jpg"],
+    modelaj_manual: [ "modelaj_manual_cover.jpeg","manual1.jpeg", "manual2.jpg"],
+    waxup: [ "waxup_cover.jpeg","waxup1.jpeg", "waxup2.jpg", "waxup3.jpg", "waxup4.jpg", "waxup5.jpg"],
+    zirconiu: [ "zirconiu_cover.jpg","zirconiu1.jpg" ]
+}
 
 // Define portfolio cards data
 const cards = [
     {
       imgSrc: "modelaj_virtual_cover2.jpeg",
       imgTitle: "Modelaj Virtual",
-      imgDescription: "Modele virtuale realizate cu ajutorul software-ului 3SHAPE."
+      imgDescription: "Modele virtuale realizate cu ajutorul software-ului 3SHAPE.",
+      category: "modelaj_virtual"
     },
     {
       imgSrc: "coroane_emax_cover_cut3.jpeg",
       imgTitle: "Coroane Presate Emax",
-      imgDescription: "Folosind cuptorul IVOCLAR EP 5010 și ceramică lichidă MIYO."
+      imgDescription: "Folosind cuptorul IVOCLAR EP 5010 și ceramică lichidă MIYO.",
+      category: "emax"
     },
     {
       imgSrc: "ceramica_strat_cover_cut.jpeg",
       imgTitle: "Ceramică Stratificată",
-      imgDescription: "Realizată prin stratificarea ceramicii IVOCLAR."
+      imgDescription: "Realizată prin stratificarea ceramicii IVOCLAR.",
+      category: "ceramica_stratificata"
     },
     {
       imgSrc: "inlay_cover.jpg",
       imgTitle: "Inlay-uri și Onlay-uri",
-      imgDescription: "Realizate din ceramică presată Emax Press Multi."
+      imgDescription: "Realizate din ceramică presată Emax Press Multi.",
+      category: "inlay_onlay"
     },
     {
       imgSrc: "lucrari_implant_cover.jpg",
       imgTitle: "Lucrări Protetice pe Implanturi",
-      imgDescription: "Realizate din ceramică presată și zirconiu."
+      imgDescription: "Realizate din ceramică presată și zirconiu.",
+      category:  "implanturi"
     },
     {
       imgSrc: "modelaj_manual_cover.jpeg",
       imgTitle: "Modelaj Manual",
-      imgDescription: "Realizate din ceară Bredent."
+      imgDescription: "Realizate din ceară Bredent.",
+      category: "modelaj_manual"
     },
     {
       imgSrc: "waxup_cover.jpeg",
       imgTitle: "Waxup",
-      imgDescription: "Realizate manual din ceară Bredent."
+      imgDescription: "Realizate manual din ceară Bredent.",
+      category: "waxup"
     },
     {
       imgSrc: "zirconiu_cover.jpg",
       imgTitle: "Coroane și Punți Zirconiu",
-      imgDescription: "Folosind Discuri de Zirconiu Multi și ceramică lichidă MIYO."
+      imgDescription: "Folosind Discuri de Zirconiu Multi și ceramică lichidă MIYO.",
+      category: "zirconiu"
+
     }
   ];
 
@@ -68,7 +92,8 @@ export default function Portfolio(){
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
-
+    const [activeCategory, setActiveCategory] = useState("");
+    const [activeImage, setActiveImage] = useState("");
 
     // Carousel width setup
     useEffect(()=>{
@@ -81,7 +106,12 @@ export default function Portfolio(){
     },[])
 
     const openModal = (index) => {
+        const selectedCategory = cards[index].category;
+        const selectedImage = `/galerii_foto/${cards[index].imgSrc}`;
+        
         setActiveIndex(index);
+        setActiveImage(selectedImage);
+        setActiveCategory(selectedCategory);
         setIsModalOpen(true);
     };
 
@@ -89,13 +119,13 @@ export default function Portfolio(){
         setIsModalOpen(false);
     };
 
-    const prevImage = () => {
-        setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
-    };
+    // const prevImage = () => {
+    //     setActiveIndex((prev) => (prev === 0 ? cards.length - 1 : prev - 1));
+    // };
 
-    const nextImage = () => {
-        setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
-    };
+    // const nextImage = () => {
+    //     setActiveIndex((prev) => (prev === cards.length - 1 ? 0 : prev + 1));
+    // };
 
 
 
@@ -121,11 +151,12 @@ export default function Portfolio(){
                         {cards.map((card, i) => (
                             <PortfolioCard 
                                 key={i}
-                                imgSrc={card.imgSrc}
+                                imgSrc={`/galerii_foto/${card.imgSrc}`}
                                 imgTitle={card.imgTitle}
                                 imgDescription={card.imgDescription}
-                                onClick={ ()=>openModal(i) }
+                                onClick={ ()=> openModal(i) }
                             />
+                            
                         ))}
 
                     </motion.div>
@@ -139,30 +170,37 @@ export default function Portfolio(){
                         <div className="relative max-w-4xl w-full rounded-lg p-6">
                             {/* Close */}
                             <button
-                                className="absolute top-4 right-4 text-gray-600 hover:text-black"
+                                className="absolute top-0 right-0 text-gray-400 hover:text-black"
                                 onClick={closeModal}
                             >
-                                <FaTimes className="text-2xl" />
+                                <FaTimes className="text-3xl" />
                             </button>
 
                             {/* Main Image */}
                             <div className="flex justify-center items-center max-w-4xl mb-4">
                                 <img 
-                                    src={cards[activeIndex].imgSrc} 
+                                    src={activeImage} 
                                     alt={cards[activeIndex].imgTitle}
                                     className="max-h-[70vh] object-contain rounded-lg" />
                             </div>
 
                             {/* Thumbnails */}
-                            {/* <div className="flex gap-2 justify-center overflow-x-auto">
+                            <div className="flex gap-2 justify-center overflow-x-auto">
                                 {
-                                    cards.map((card, i)=>(
+                                    categories[activeCategory].map((thumb, i)=>(
                                         <img
-                                            key={} 
-                                            src="" alt="" />
+                                            key={i} 
+                                            src={`/galerii_foto/${activeCategory}/${thumb}`}
+                                            alt={`Exemplu${i} de ${activeCategory} `} 
+                                            onClick={() => {setActiveImage(`/galerii_foto/${activeCategory}/${thumb}`)}}
+                                            className={`w-24 h-16 object-cover rounded-md cursor-pointer transition 
+                                                    ${activeImage === `/galerii_foto/${activeCategory}/${thumb}` ?
+                                                     "ring-4 ring-yellow-400" : "opacity-70 hover:opacity-100"}`}
+                                            />
+
                                     ))
                                 }
-                            </div> */}
+                            </div>
 
                         </div>
                     </div>
