@@ -116,6 +116,31 @@ export default function Portfolio(){
     // };
 
 
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!isModalOpen || !activeCategory) return;
+        
+            const thumbs = categories[activeCategory];
+            if (!thumbs) return;
+      
+            // Build full paths for comparison
+            const thumbPaths = thumbs.map((t) => `/galerii_foto/${activeCategory}/${t}`);
+            const currentIndex = thumbPaths.indexOf(activeImage);
+            if (currentIndex === -1) return;
+      
+            if (e.key === "ArrowRight") {
+                const nextIndex = (currentIndex + 1) % thumbPaths.length;
+                setActiveImage(thumbPaths[nextIndex]);
+              } else if (e.key === "ArrowLeft") {
+                const prevIndex = (currentIndex - 1 + thumbPaths.length) % thumbPaths.length;
+                setActiveImage(thumbPaths[prevIndex]);
+              }
+            };
+        
+            window.addEventListener("keydown", handleKeyDown);
+            return () => window.removeEventListener("keydown", handleKeyDown);
+        }, [isModalOpen, activeCategory, activeImage]);
+
 
     return (
         <section id="portfolio" className="min-h-screen p-6 md:p-12 bg-gradient-to-b from-cyan-50 to-white">
