@@ -4,19 +4,19 @@ import { FaPlus} from "react-icons/fa";
 
 export default function PortfolioCard ({ imgSrc, imgTitle, imgDescription, onClick}){
     return (
-        <motion.div className="flex-shrink-0 bg-white rounded-lg shadow p-4">
+        <div >
 
             {/* Photo + Overlay group */}
-            <div className="relative max-w-sm cursor-pointer overflow-hidden rounded-lg shadow-lg group"
+            <div className="relative max-w-sm overflow-hidden rounded-lg shadow-lg cursor-pointer group"
                 onClick={onClick}
                 >
                 <img src={imgSrc} 
                     alt={imgTitle}
-                    className="w-full h-64 object-cover rounded-md" />
+                    className="object-cover w-full h-64 rounded-md" />
 
                 {/* Overlay + Plus */}
-                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition duration-300 group-hover:opacity-100">
-                    <FaPlus className="text-white text-3xl" />
+                <div className="absolute inset-0 flex items-center justify-center transition duration-300 bg-black opacity-0 bg-opacity-40 group-hover:opacity-100">
+                    <FaPlus className="text-3xl text-white" />
                 </div>
                 
             </div>
@@ -25,7 +25,7 @@ export default function PortfolioCard ({ imgSrc, imgTitle, imgDescription, onCli
                 <h3 className="font-medium">{imgTitle}</h3>
                 <p className="text-sm text-gray-500">{imgDescription}</p>
             </div>
-        </motion.div>
+        </div>
 
     )
 }

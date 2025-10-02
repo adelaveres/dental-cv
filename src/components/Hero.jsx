@@ -34,7 +34,7 @@ export default function Hero(){
                 <motion.div className="flex justify-center gap-3 mt-6"
                         initial={{ opacity: 0}}
                         animate={ {opacity: 1}} 
-                        transition={{ delay: 1.8, duration: 0.6}}>
+                        transition={{ delay: 1.6, duration: 0.6}}>
                     <a href="/Marin_Maris_CV_2025_RO.pdf" className="px-4 py-2 font-semibold text-white transition duration-300 transform rounded-md bg-cyan-700 drop-shadow-lg hover:bg-cyan-800 hover:scale-105 hover:drop-shadow-xl"
                         style={{
                             textShadow: "2px 2px 4px rgba(0,0,0,0.5)"
@@ -55,11 +55,11 @@ export default function Hero(){
                 <motion.div
                     initial={{ opacity: 0}}
                     animate={{ opacity: 1}}
-                    transition={{delay: 2, duration: 0.1}}>
+                    transition={{delay: 1.8, duration: 0.1}}>
                         
                     <p className="mt-5 text-xs text-gray-400">Glisează în sus pentru mai multe</p>
                     <p className="flex justify-center mt-2 font-bold text-gray-400">
-                        <IoIosArrowDown className=""/>
+                        <IoIosArrowDown/>
                     </p>
                 </motion.div>
                 

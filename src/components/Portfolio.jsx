@@ -1,7 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react'
 import PortfolioCard from './PortfolioCard';
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion';
 import {FaTimes} from "react-icons/fa";
+import { LuMoveHorizontal } from "react-icons/lu";
+
 
 
 const categories = {
@@ -87,6 +89,9 @@ const cards = [
 
 
 export default function Portfolio(){
+    
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-50px"});
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -143,27 +148,50 @@ export default function Portfolio(){
 
 
     return (
-        <section id="portfolio" className="min-h-screen p-6 md:p-12 bg-gradient-to-b from-cyan-50 to-white">
-            <div className="max-w-4xl md:max-w-6xl mx-auto">
-                <h2 className="text-3xl font-bold mb-6 text-center">Lucrări</h2>
-                <p className="text-sm text-gray-500 mb-6 text-center">
+        <section ref={ref} id="portfolio" className="min-h-screen p-6 md:p-12 bg-gradient-to-b from-cyan-50 to-white">
+            <div className="max-w-4xl mx-auto md:max-w-6xl">
+                <motion.h2 className="mb-6 text-3xl font-bold text-center"
+                    initial={{ opacity: 0}}
+                    animate={ isInView? { opacity: 1}: {}}
+                    transition={{ delay: 0.6, duration: 1.2}}
+                    >Lucrări
+                </motion.h2>
+                <motion.p className="mb-2 text-sm text-center text-gray-500"
+                    initial={{ opacity: 0}}
+                    animate={ isInView? { opacity: 1}: {}}
+                    transition={{ delay: 1, duration: 1.2}}
+                >
                     Exemple de lucrări și restaurări. Glisează pe orizontală.
-                </p>
+                </motion.p>
+                
+                <motion.div className="flex justify-center mt-2 mb-6 font-bold text-gray-500"
+                    initial={{ opacity: 0}}
+                    animate={ isInView? { opacity: 1}: {}}
+                    transition={{ delay: 1, duration: 1.2}}
+                >
+                    <LuMoveHorizontal />
+                </motion.div>
 
                 {/* Carousel */}
-                <div className="overflow-x-auto rounded-lg p-2">
+                <div className="p-2 overflow-x-auto rounded-lg">
                     <div className="flex gap-4" >
 
                         {/* Portfolio Cards */}
 
                         {cards.map((card, i) => (
-                            <PortfolioCard 
-                                key={i}
-                                imgSrc={`/galerii_foto/${card.imgSrc}`}
-                                imgTitle={card.imgTitle}
-                                imgDescription={card.imgDescription}
-                                onClick={ ()=> openModal(i) }
-                            />
+                            <motion.div className="flex-shrink-0 p-4 bg-white rounded-lg shadow"
+                                initial={{ opacity: 0}}
+                                animate={ isInView? { opacity: 1}: {}}
+                                transition={{ delay: 1.2 + i/3, duration: 1.4}}
+                            >
+                                <PortfolioCard 
+                                    key={i}
+                                    imgSrc={`/galerii_foto/${card.imgSrc}`}
+                                    imgTitle={card.imgTitle}
+                                    imgDescription={card.imgDescription}
+                                    onClick={ ()=> openModal(i) }
+                                />
+                            </motion.div>
                             
                         ))}
 
@@ -174,8 +202,8 @@ export default function Portfolio(){
             {/* Modal */}
             {
                 isModalOpen && (
-                    <div className="fixed inset-0 bg-black bg-opacity-80 flex items-items-center justify-center z-50 p-4">
-                        <div className="relative max-w-4xl w-full rounded-lg p-6">
+                    <div className="fixed inset-0 z-50 flex justify-center p-4 bg-black bg-opacity-80 items-items-center">
+                        <div className="relative w-full max-w-4xl p-6 rounded-lg">
                             {/* Close */}
                             <button
                                 className="absolute top-0 right-0 text-gray-400 hover:text-black"
@@ -185,7 +213,7 @@ export default function Portfolio(){
                             </button>
 
                             {/* Main Image */}
-                            <div className="flex justify-center items-center max-w-4xl mb-4">
+                            <div className="flex items-center justify-center max-w-4xl mb-4">
                                 <img 
                                     src={activeImage} 
                                     alt={cards[activeIndex].imgTitle}
@@ -193,7 +221,7 @@ export default function Portfolio(){
                             </div>
 
                             {/* Thumbnails */}
-                            <div className="flex gap-2 justify-center overflow-x-auto">
+                            <div className="flex justify-center gap-2 overflow-x-auto">
                                 {
                                     categories[activeCategory].map((thumb, i)=>(
                                         <img

@@ -1,6 +1,9 @@
 import { FaCube, FaLayerGroup, FaPrint } from "react-icons/fa";
 import { GiTooth, GiCrystalBars, GiMetalBar, GiCrown } from "react-icons/gi";
 import { FaPen, FaPenFancy, FaPenNib } from "react-icons/fa";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from "react";
+
 
 
 const designSkills = [
@@ -32,69 +35,89 @@ const prodSkills = [
 ]
 
 export default function Skills() {
-  return (
-    <section className="min-h-screen flex items-center p-6 md:p-12 bg-gradient-to-b from-white to-cyan-50"> 
-       {/* bg-gradient-to-b from-white to-gray-50 */}
-      <div className="w-full max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-6 text-center">Competențe</h2>
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-50px"});
+    
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+    return (
+        <section ref={ref}
+            className="flex items-center min-h-screen p-6 md:p-12 bg-gradient-to-b from-white to-cyan-50"> 
+        
+            <div className="w-full max-w-4xl mx-auto">
+                <motion.h2 className="mb-6 text-3xl font-bold text-center"
+                        initial={{ opacity: 0}}
+                        animate={ isInView? { opacity: 1}: {}}
+                        transition={{ delay: 0.6, duration: 1.2}}
+                    >Competențe
+                </motion.h2>
 
-            <div className="w-full"> {/* Column 1 */}
-                <div className="max-w-[300px] mx-auto">
-                    <h3 className="text-2xl font-bold mt-8 mb-6">Design și Modelaj Digital</h3>
-                    <div className="flex flex-col gap-6">
-                        { designSkills.map((s, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="text-brand text-2xl">{s.icon}</div>
-                                <p className="text-sm">{s.name}</p>
+                <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
+
+                    {/* Column 1 */}
+                    <motion.div className="w-full"
+                        initial={{ opacity:0 }}
+                        animate={ isInView? {opacity:1} : {}}
+                        transition={{delay: 1, duration: 2.2}}
+                    >
+                        <div className="max-w-[300px] mx-auto">
+                            <h3 className="mt-8 mb-6 text-2xl font-bold">Design și Modelaj Digital</h3>
+                            <div className="flex flex-col gap-6">
+                                { designSkills.map((s, i) => (
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="text-2xl text-brand">{s.icon}</div>
+                                        <p className="text-sm">{s.name}</p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
 
-                    <h3 className="text-2xl font-bold mt-8 mb-6">Materiale și Tehnologii</h3>
-                    <div className="flex flex-col gap-6">
-                        { techSkills.map((s, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="text-brand text-2xl">{s.icon}</div>
-                                <p className="text-sm">{s.name}</p>
+                            <h3 className="mt-8 mb-6 text-2xl font-bold">Materiale și Tehnologii</h3>
+                            <div className="flex flex-col gap-6">
+                                { techSkills.map((s, i) => (
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="text-2xl text-brand">{s.icon}</div>
+                                        <p className="text-sm">{s.name}</p>
+                                    </div>
+                                ))}
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Column 2 */}
+                    <motion.div className="w-full"
+                        initial={{ opacity:0 }}
+                        animate={ isInView? {opacity:1} : {}}
+                        transition={{ delay: 1.2, duration: 2.2}}
+                    >
+                        <div className="max-w-[300px] mx-auto">
+
+                            <h3 className="mt-8 mb-6 text-2xl font-bold">Tipuri de Lucrări</h3>
+                            <div className="flex flex-col gap-6">
+                                { workSkills.map((s, i) => (
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="text-2xl text-brand">{s.icon}</div>
+                                        <p className="text-sm">{s.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <h3 className="mt-8 mb-6 text-2xl font-bold">Tehnologii de Producție</h3>
+                            <div className="flex flex-col gap-6">
+                                { prodSkills.map((s, i) => (
+                                    <div key={i} className="flex items-center gap-4">
+                                        <div className="text-2xl text-brand">{s.icon}</div>
+                                        <p className="text-sm">{s.name}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+
+                    </motion.div>
+
                 </div>
+
+            
             </div>
-
-            <div className="w-full"> {/* Column 2 */}
-                <div className="max-w-[300px] mx-auto">
-
-                    <h3 className="text-2xl font-bold mt-8 mb-6">Tipuri de Lucrări</h3>
-                    <div className="flex flex-col gap-6">
-                        { workSkills.map((s, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="text-brand text-2xl">{s.icon}</div>
-                                <p className="text-sm">{s.name}</p>
-                            </div>
-                        ))}
-                    </div>
-
-                    <h3 className="text-2xl font-bold mt-8 mb-6">Tehnologii de Producție</h3>
-                    <div className="flex flex-col gap-6">
-                        { prodSkills.map((s, i) => (
-                            <div key={i} className="flex items-center gap-4">
-                                <div className="text-brand text-2xl">{s.icon}</div>
-                                <p className="text-sm">{s.name}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-
-       
-      </div>
-    </section>
+        </section>
   );
 }
