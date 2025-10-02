@@ -4,6 +4,9 @@ export default {
     theme: {
       extend: {
         colors: { brand: '#0ea5a4' },
+        fontFamily: {
+          dancing: ["'Dancing Script'", "ui-sans-serif", "system-ui", "sans-serif"],
+        },
       },
     },
     plugins: [],

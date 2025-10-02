@@ -172,6 +172,7 @@ export default function Portfolio(){
                     <LuMoveHorizontal />
                 </motion.div>
 
+
                 {/* Carousel */}
                 <div className="p-2 overflow-x-auto rounded-lg">
                     <div className="flex gap-4" >
@@ -179,7 +180,9 @@ export default function Portfolio(){
                         {/* Portfolio Cards */}
 
                         {cards.map((card, i) => (
-                            <motion.div className="flex-shrink-0 p-4 bg-white rounded-lg shadow"
+                            <motion.div 
+                                key={i}
+                                className="flex-shrink-0 p-4 bg-white rounded-lg shadow"
                                 initial={{ opacity: 0}}
                                 animate={ isInView? { opacity: 1}: {}}
                                 transition={{ delay: 1.2 + i/3, duration: 1.4}}
@@ -197,13 +200,20 @@ export default function Portfolio(){
 
                     </div>
                 </div>
+                <motion.p className="mt-4 mb-2 text-sm text-center text-gray-500"
+                    initial={{ opacity: 0}}
+                    animate={ isInView? { opacity: 1}: {}}
+                    transition={{ delay: 2, duration: 1.2}}
+                >
+                    Selectează o imagine pentru a deschide galeria.
+                </motion.p>
             </div>
 
             {/* Modal */}
             {
                 isModalOpen && (
-                    <div className="fixed inset-0 z-50 flex justify-center p-4 bg-black bg-opacity-80 items-items-center">
-                        <div className="relative w-full max-w-4xl p-6 rounded-lg">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-80">
+                        <div className="relative w-full p-4 rounded-lg sm:w-11/12 md:w-3/4 lg:w-2/3 sm:p-6">
                             {/* Close */}
                             <button
                                 className="absolute top-0 right-0 text-gray-400 hover:text-black"
@@ -213,7 +223,7 @@ export default function Portfolio(){
                             </button>
 
                             {/* Main Image */}
-                            <div className="flex items-center justify-center max-w-4xl mb-4">
+                            <div className="flex items-center justify-center w-full px-4 mb-4">
                                 <img 
                                     src={activeImage} 
                                     alt={cards[activeIndex].imgTitle}
