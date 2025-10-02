@@ -87,23 +87,11 @@ const cards = [
 
 
 export default function Portfolio(){
-    const carouselRef = useRef(null)
-    const [width, setWidth] = useState(0)
 
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const [activeCategory, setActiveCategory] = useState("");
     const [activeImage, setActiveImage] = useState("");
-
-    // Carousel width setup
-    useEffect(()=>{
-        const el = carouselRef.current
-        if(!el) return
-        setWidth(el.scrollWidth - el.offsetWidth)
-        const onResize = ()=> setWidth(el.scrollWidth - el.offsetWidth)
-        window.addEventListener('resize', onResize)
-        return ()=> window.removeEventListener('resize', onResize)
-    },[])
 
     const openModal = (index) => {
         const selectedCategory = cards[index].category;
@@ -134,17 +122,12 @@ export default function Portfolio(){
             <div className="max-w-4xl md:max-w-6xl mx-auto">
                 <h2 className="text-3xl font-bold mb-6 text-center">Lucrări</h2>
                 <p className="text-sm text-gray-500 mb-6 text-center">
-                    Exemple de lucrări și restaurări. Glisează sau trage pe orizontală.
+                    Exemple de lucrări și restaurări. Glisează pe orizontală.
                 </p>
 
                 {/* Carousel */}
-                <div className="overflow-hidden rounded-lg p-2">
-                    <motion.div 
-                        ref={carouselRef} 
-                        className="flex gap-4 cursor-grab" 
-                        whileTap={{ cursor: 'grabbing' }} 
-                        drag="x" 
-                        dragConstraints={{ right: 0, left: -width }}>
+                <div className="overflow-x-auto rounded-lg p-2">
+                    <div className="flex gap-4" >
 
                         {/* Portfolio Cards */}
 
@@ -159,7 +142,7 @@ export default function Portfolio(){
                             
                         ))}
 
-                    </motion.div>
+                    </div>
                 </div>
             </div>
 
