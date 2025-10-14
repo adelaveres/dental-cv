@@ -7,6 +7,10 @@
 --brand: #0ea5a4;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 
 /* Respect user's reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
@@ -18,8 +22,8 @@
 }
 
 
-@layer base {
+/* @layer base {
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply antialiased text-gray-900 bg-white;
   }
-}
+} */
