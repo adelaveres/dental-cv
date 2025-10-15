@@ -10,7 +10,6 @@ const categories = {
     modelaj_virtual: [
         "modelaj_virtual_cover2.jpeg",
         "modelaj_v_cover.jpg",
-        "modelaj_virtual_cover.jpeg",
         "modelaj1.jpeg",
         "modelaj2.jpeg",
         "modelaj3.jpeg",
@@ -223,8 +222,8 @@ export default function Portfolio(){
             {/* Modal */}
             {
                 isModalOpen && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-80">
-                        <div className="relative w-full p-4 rounded-lg sm:w-11/12 md:w-3/4 lg:w-2/3 sm:p-6">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80">
+                        <div className="relative w-full px-4 rounded-lg sm:w-11/12 md:w-3/4 lg:w-2/3 sm:p-6">
                             {/* Close */}
                             <button
                                 className="absolute top-0 right-0 text-gray-400 hover:text-black"
@@ -234,11 +233,11 @@ export default function Portfolio(){
                             </button>
 
                             {/* Main Image */}
-                            <div className="flex items-center justify-center w-full px-4 mb-4">
+                            <div className="flex items-center justify-center w-full px-4 mb-4 ">
                                 <img 
                                     src={activeImage} 
                                     alt={cards[activeIndex].imgTitle}
-                                    className="max-h-[70vh] object-contain rounded-lg" />
+                                    className="min-h-[50vh] object-contain rounded-lg" />
                             </div>
 
                             {/* Thumbnails */}
