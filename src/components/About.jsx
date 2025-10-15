@@ -12,8 +12,6 @@ export default function About(){
             
             <div className="max-w-4xl mx-auto">
 
-                {/* <h2 className="mb-12 text-3xl font-bold text-center">Despre mine . . .</h2> */}
-
                 <div className="flex flex-col items-center gap-6 md:flex-row md:gap-12">
 
                     <div className="w-auto mx-auto md:w-full md:w-1/2 md:mx-0">

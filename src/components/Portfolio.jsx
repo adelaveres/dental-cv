@@ -156,33 +156,34 @@ export default function Portfolio(){
                     transition={{ delay: 0.6, duration: 1.2}}
                     >Lucrări
                 </motion.h2>
-                <motion.p className="mb-2 text-sm text-center text-gray-500"
+                <motion.p className="text-sm text-center text-gray-400 "
                     initial={{ opacity: 0}}
                     animate={ isInView? { opacity: 1}: {}}
                     transition={{ delay: 1, duration: 1.2}}
                 >
-                    Exemple de lucrări și restaurări. Glisează pe orizontală.
+                    Exemple de lucrări și restaurări.
+                </motion.p>
+                <motion.p className="mb-6 text-sm text-center text-gray-400 "
+                    initial={{ opacity: 0}}
+                    animate={ isInView? { opacity: 1}: {}}
+                    transition={{ delay: 1, duration: 1.2}}
+                >
+                    (Selectează o imagine pentru a deschide galeria.)
                 </motion.p>
                 
-                <motion.div className="flex justify-center mt-2 mb-6 font-bold text-gray-500"
-                    initial={{ opacity: 0}}
-                    animate={ isInView? { opacity: 1}: {}}
-                    transition={{ delay: 1, duration: 1.2}}
-                >
-                    <LuMoveHorizontal />
-                </motion.div>
+                
 
 
                 {/* Carousel */}
-                <div className="p-2 overflow-x-auto rounded-lg">
-                    <div className="flex gap-4" >
+                <div className="p-2 rounded-lg md:overflow-x-auto">
+                    <div className="flex flex-col gap-4 md:flex-row" >
 
                         {/* Portfolio Cards */}
 
                         {cards.map((card, i) => (
                             <motion.div 
                                 key={i}
-                                className="flex-shrink-0 p-4 bg-white rounded-lg shadow"
+                                className="flex-shrink-0 w-full max-w-sm p-4 mx-auto bg-white rounded-lg shadow md:w-auto"
                                 initial={{ opacity: 0}}
                                 animate={ isInView? { opacity: 1}: {}}
                                 transition={{ delay: 1.2 + i/3, duration: 1.4}}
@@ -200,14 +201,24 @@ export default function Portfolio(){
 
                     </div>
                 </div>
-                <motion.p className="mt-4 mb-2 text-sm text-center text-gray-500"
-                    initial={{ opacity: 0}}
-                    animate={ isInView? { opacity: 1}: {}}
-                    transition={{ delay: 2, duration: 1.2}}
-                >
-                    Selectează o imagine pentru a deschide galeria.
-                </motion.p>
+                
             </div>
+
+            <motion.p className="hidden mt-6 mb-2 text-sm text-center text-gray-400 md:block "
+                initial={{ opacity: 0}}
+                animate={ isInView? { opacity: 1}: {}}
+                transition={{ delay: 1, duration: 1.2}}
+            >
+                (Glisează pe orizontală.)
+            </motion.p>
+                
+            <motion.div className="justify-center hidden mt-2 mb-6 text-gray-400 md:flex"
+                initial={{ opacity: 0}}
+                animate={ isInView? { opacity: 1}: {}}
+                transition={{ delay: 1, duration: 1.2}}
+            >
+                <LuMoveHorizontal className="font-bold"/>
+            </motion.div>
 
             {/* Modal */}
             {

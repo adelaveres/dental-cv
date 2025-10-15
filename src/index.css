@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 
 :root{
@@ -10,20 +8,3 @@
 html {
   scroll-behavior: smooth;
 }
-
-
-/* Respect user's reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  * {
-  animation-duration: 1ms !important;
-  transition-duration: 1ms !important;
-  scroll-behavior: auto !important;
-  }
-}
-
-
-/* @layer base {
-  body {
-    @apply antialiased text-gray-900 bg-white;
-  }
-} */

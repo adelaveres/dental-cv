@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSwipeable } from 'react-swipeable'
 import Hero from './components/Hero'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -10,14 +9,14 @@ import Footer from './components/Footer'
 
 export default function App(){
 
-return (
-    <div className="font-sans">
-        <Hero />
-        <About />
-        <Skills />
-        <Portfolio />
-        <Contact />
-        <Footer />
-    </div>
-)
+    return (
+        <div className="font-sans">
+            <Hero />
+            <About />
+            <Skills />
+            <Portfolio />
+            <Contact />
+            <Footer />
+        </div>
+    )
 }
